@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager
 import com.app.unsplashgallery.databinding.FragmentDetailBinding
-import com.app.unsplashgallery.databinding.FragmentGalleryBinding
 
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private lateinit var binding: FragmentDetailBinding
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewPagerAdapter: ImageViewPagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,6 +20,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     ): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
 
+        println("Detail fragment onCreateView")
         return binding.root
     }
 
@@ -30,13 +30,30 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         val position = arguments?.getInt("position")
 
         activity?.let {
-            viewModel = ViewModelProvider(it).get(MainViewModel::class.java)
-
-            viewModel.photosLiveData.observe(viewLifecycleOwner, { images ->
-                val viewPagerAdapter = ImageViewPagerAdapter(requireContext(), images)
-                binding.viewPager.adapter = viewPagerAdapter
-                position?.let { binding.viewPager.currentItem = position }
-            })
+            (activity as MainActivity).viewModel.photosLiveData.observe(
+                viewLifecycleOwner,
+                { images ->
+                    viewPagerAdapter = ImageViewPagerAdapter(requireContext(), images)
+                    binding.viewPager.adapter = viewPagerAdapter
+                    position?.let { binding.viewPager.currentItem = position }
+                })
         }
+
+
+        binding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+            }
+
+            override fun onPageSelected(position: Int) {
+                (activity as MainActivity).viewModel.selectedItem = position
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {}
+
+        })
     }
 }

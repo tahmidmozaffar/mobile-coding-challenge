@@ -8,8 +8,9 @@ import androidx.viewpager.widget.PagerAdapter
 
 class ImageViewPagerAdapter(
     private val context: Context,
-    private val images: List<UnsplashImage>,
+    private var images: List<UnsplashImage>,
 ) : PagerAdapter() {
+
     override fun getCount(): Int = images.size
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {

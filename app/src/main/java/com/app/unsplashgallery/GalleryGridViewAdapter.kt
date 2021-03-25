@@ -2,12 +2,12 @@ package com.app.unsplashgallery
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 
 class GalleryGridViewAdapter(
-    private val images: List<UnsplashImage>,
     private val itemClickAction: (position: Int) -> Unit
-) : RecyclerView.Adapter<GalleryItemViewHolder>() {
+) : PagedListAdapter<UnsplashImage, GalleryItemViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GalleryItemViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -16,7 +16,20 @@ class GalleryGridViewAdapter(
     }
 
     override fun onBindViewHolder(holder: GalleryItemViewHolder, position: Int) =
-        holder.bind(images[position], position)
+        holder.bind(getItem(position)!!, position)
 
-    override fun getItemCount(): Int = images.size
+    companion object {
+        val DiffCallback = object : DiffUtil.ItemCallback<UnsplashImage>() {
+            override fun areItemsTheSame(oldItem: UnsplashImage, newItem: UnsplashImage): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(
+                oldItem: UnsplashImage,
+                newItem: UnsplashImage
+            ): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }

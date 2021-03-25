@@ -14,7 +14,7 @@ class ViewPageItemViewHolder(private val itemView: View) {
     fun bind(image: UnsplashImage, position: Int) {
 
         Glide.with(itemView.context)
-            .load(Uri.parse(image.urls.regular))
+            .load(Uri.parse(image.urls.small))
             .apply(
                 RequestOptions()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)

@@ -1,10 +1,10 @@
 package com.app.unsplashgallery
 
-class ApiClient {
+class ApiClient(private val unsplashApiKey: String) {
 
-    suspend fun getPhotos(page: Int = 1, perPage: Int = 50, orderBy: String = "latest"): List<UnsplashImage> {
+    suspend fun getPhotos(page: Int, perPage: Int, orderBy: String): List<UnsplashImage> {
         return RetrofitBuilder.api.getPhotos(
-            "fLgwpoJzeXgvOlHzFtNd1OxPa2at8i7sTimn3x9oJ0E",
+            unsplashApiKey,
             page,
             perPage,
             orderBy

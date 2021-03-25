@@ -6,17 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView.SmoothScroller
 import com.app.unsplashgallery.databinding.FragmentGalleryBinding
+
 
 class GalleryFragment : Fragment(R.layout.fragment_gallery) {
 
     private lateinit var binding: FragmentGalleryBinding
-    private lateinit var viewModel: MainViewModel
+    private lateinit var gridAdapter: GalleryGridViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,29 +23,36 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery) {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentGalleryBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.let {
-            viewModel = ViewModelProvider(it).get(MainViewModel::class.java)
+        var viewModel = (activity as MainActivity).viewModel
 
-            viewModel.photosLiveData.observe(viewLifecycleOwner, {
-                binding.galleryGrid.apply {
-                    setHasFixedSize(true)
-                    layoutManager = GridLayoutManager(context, 4)
-                    adapter = GalleryGridViewAdapter(it, ::itemClickAction)
-                }
-            })
+        binding.galleryGrid.apply {
+            setHasFixedSize(true)
+            layoutManager = GridLayoutManager(context, 4)
         }
+
+        gridAdapter = GalleryGridViewAdapter(::itemClickAction)
+        binding.galleryGrid.adapter = gridAdapter
+
+        viewModel.photosLiveData.observe(viewLifecycleOwner, { images ->
+            gridAdapter.submitList(images)
+        })
+
+        binding.galleryGrid.postDelayed({
+            val smoothScroller: SmoothScroller = CenterSmoothScroller(binding.galleryGrid.context)
+            smoothScroller.targetPosition = viewModel.selectedItem
+            binding.galleryGrid.layoutManager?.startSmoothScroll(smoothScroller)
+        }, 500)
     }
 
     private fun itemClickAction(position: Int) {
         val bundle = bundleOf("position" to position)
         findNavController().navigate(R.id.goToDetails, bundle)
-        viewModel.selectedItem = position
+        (activity as MainActivity).viewModel.selectedItem = position
     }
 }
