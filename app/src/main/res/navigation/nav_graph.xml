@@ -6,7 +6,7 @@
     app:startDestination="@id/galleryFragment">
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.app.unsplashgallery.GalleryFragment"
+        android:name="com.app.unsplashgallery.ui.imageGrid.GalleryFragment"
         android:label="GalleryFragment"
         tools:layout="@layout/fragment_gallery"
         >
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.app.unsplashgallery.DetailFragment"
+        android:name="com.app.unsplashgallery.ui.imageDetail.DetailFragment"
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument

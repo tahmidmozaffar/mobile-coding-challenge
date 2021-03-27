@@ -1,4 +1,4 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.ui.imageDetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.app.unsplashgallery.ui.imageDetail.adapter.ImageViewPagerAdapter
+import com.app.unsplashgallery.R
 import com.app.unsplashgallery.databinding.FragmentDetailBinding
+import com.app.unsplashgallery.ui.MainActivity
 
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 

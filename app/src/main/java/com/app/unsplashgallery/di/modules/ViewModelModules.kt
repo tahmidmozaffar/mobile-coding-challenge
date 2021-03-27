@@ -1,9 +1,9 @@
 package com.app.unsplashgallery.di.modules
 
 import android.content.Context
-import com.app.unsplashgallery.ConfigHelper
-import com.app.unsplashgallery.ConfigHelperImpl
-import com.app.unsplashgallery.MainViewModel
+import com.app.unsplashgallery.config.ConfigHelper
+import com.app.unsplashgallery.config.ConfigHelperImpl
+import com.app.unsplashgallery.ui.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

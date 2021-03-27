@@ -1,5 +1,6 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.data.source.remote.network
 
+import com.app.unsplashgallery.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

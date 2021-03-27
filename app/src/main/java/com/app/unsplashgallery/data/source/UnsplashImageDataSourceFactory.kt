@@ -1,8 +1,9 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.data.source
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
-import com.app.unsplashgallery.repository.UnsplashRepository
+import com.app.unsplashgallery.domain.model.UnsplashImage
+import com.app.unsplashgallery.domain.repository.UnsplashRepository
 
 
 class UnsplashImageDataSourceFactory(private val repository: UnsplashRepository) :

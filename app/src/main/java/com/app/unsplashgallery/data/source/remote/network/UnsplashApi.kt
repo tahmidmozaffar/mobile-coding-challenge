@@ -1,5 +1,6 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.data.source.remote.network
 
+import com.app.unsplashgallery.domain.model.UnsplashImage
 import retrofit2.http.GET
 import retrofit2.http.Query
 

@@ -1,4 +1,4 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.config
 
 interface ConfigHelper {
     fun getUnsplashAPIKey(): String

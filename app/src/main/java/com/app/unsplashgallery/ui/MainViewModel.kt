@@ -1,10 +1,14 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.app.unsplashgallery.repository.UnsplashRepository
+import com.app.unsplashgallery.util.Constants
+import com.app.unsplashgallery.config.ConfigHelper
+import com.app.unsplashgallery.data.source.UnsplashImageDataSourceFactory
+import com.app.unsplashgallery.domain.model.UnsplashImage
+import com.app.unsplashgallery.domain.repository.UnsplashRepository
 
 class MainViewModel(configHelper: ConfigHelper) : ViewModel() {
 

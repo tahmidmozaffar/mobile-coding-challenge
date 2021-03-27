@@ -1,4 +1,4 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.ui.imageGrid
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView.SmoothScroller
+import com.app.unsplashgallery.util.CenterSmoothScroller
+import com.app.unsplashgallery.ui.imageGrid.adapter.GalleryGridViewAdapter
+import com.app.unsplashgallery.R
 import com.app.unsplashgallery.databinding.FragmentGalleryBinding
+import com.app.unsplashgallery.ui.MainActivity
 
 
 class GalleryFragment : Fragment(R.layout.fragment_gallery) {

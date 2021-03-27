@@ -1,4 +1,4 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.util
 
 object Constants {
     const val INITIAL_PAGE = 1

@@ -1,10 +1,12 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.ui.imageDetail.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
+import com.app.unsplashgallery.R
+import com.app.unsplashgallery.domain.model.UnsplashImage
 
 class ImageViewPagerAdapter(
     private val context: Context,

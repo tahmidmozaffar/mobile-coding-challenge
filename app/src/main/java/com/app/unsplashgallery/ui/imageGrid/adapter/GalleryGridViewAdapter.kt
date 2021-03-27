@@ -1,9 +1,11 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.ui.imageGrid.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import com.app.unsplashgallery.R
+import com.app.unsplashgallery.domain.model.UnsplashImage
 
 class GalleryGridViewAdapter(
     private val itemClickAction: (position: Int) -> Unit

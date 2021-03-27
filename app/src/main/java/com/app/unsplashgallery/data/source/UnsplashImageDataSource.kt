@@ -1,7 +1,9 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.data.source
 
 import androidx.paging.PageKeyedDataSource
-import com.app.unsplashgallery.repository.UnsplashRepository
+import com.app.unsplashgallery.util.Constants
+import com.app.unsplashgallery.domain.model.UnsplashImage
+import com.app.unsplashgallery.domain.repository.UnsplashRepository
 
 class UnsplashImageDataSource(
     private val repository: UnsplashRepository

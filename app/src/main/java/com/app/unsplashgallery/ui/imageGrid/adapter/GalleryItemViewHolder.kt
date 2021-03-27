@@ -1,9 +1,11 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.ui.imageGrid.adapter
 
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.app.unsplashgallery.R
+import com.app.unsplashgallery.domain.model.UnsplashImage
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions

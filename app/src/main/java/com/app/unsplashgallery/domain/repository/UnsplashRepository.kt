@@ -1,6 +1,10 @@
-package com.app.unsplashgallery.repository
+package com.app.unsplashgallery.domain.repository
 
-import com.app.unsplashgallery.*
+import com.app.unsplashgallery.config.ConfigHelper
+import com.app.unsplashgallery.data.source.remote.ApiClient
+import com.app.unsplashgallery.domain.model.UnsplashImage
+import com.app.unsplashgallery.util.Constants
+import com.app.unsplashgallery.util.runOnMainThread
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

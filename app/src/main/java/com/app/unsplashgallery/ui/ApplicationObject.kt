@@ -1,4 +1,4 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.ui
 
 import android.app.Application
 import com.app.unsplashgallery.di.modules.viewModels

@@ -1,4 +1,4 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.util
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

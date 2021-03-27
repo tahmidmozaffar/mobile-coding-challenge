@@ -1,4 +1,4 @@
-package com.app.unsplashgallery
+package com.app.unsplashgallery.util
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearSmoothScroller
