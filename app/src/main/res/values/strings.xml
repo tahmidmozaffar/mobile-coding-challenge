@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UnsplashGallery</string>
+    <string name="content_desc_grid_item">grid item</string>
+    <string name="viewpager_item">viewpager item</string>
 </resources>

@@ -22,10 +22,8 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
-
-        println("Detail fragment onCreateView")
         return binding.root
     }
 
@@ -39,7 +37,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 { images ->
                     viewPagerAdapter = ImageViewPagerAdapter(requireContext(), images)
                     binding.viewPager.adapter = viewPagerAdapter
-                    mainViewModel?.selectedItem?.let {
+                    mainViewModel.selectedItem?.let {
                         binding.viewPager.currentItem = it
                     }
 
