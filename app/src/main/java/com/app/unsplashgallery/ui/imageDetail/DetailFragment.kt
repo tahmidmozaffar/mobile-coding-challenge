@@ -10,11 +10,13 @@ import com.app.unsplashgallery.ui.imageDetail.adapter.ImageViewPagerAdapter
 import com.app.unsplashgallery.R
 import com.app.unsplashgallery.databinding.FragmentDetailBinding
 import com.app.unsplashgallery.ui.MainActivity
+import com.app.unsplashgallery.ui.MainViewModel
 
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private lateinit var binding: FragmentDetailBinding
     private lateinit var viewPagerAdapter: ImageViewPagerAdapter
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,16 +31,18 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val position = arguments?.getInt("position")
+        mainViewModel = (activity as MainActivity).viewModel
 
         activity?.let {
-            (activity as MainActivity).viewModel.photosLiveData.observe(
+            mainViewModel.photosLiveData.observe(
                 viewLifecycleOwner,
                 { images ->
                     viewPagerAdapter = ImageViewPagerAdapter(requireContext(), images)
                     binding.viewPager.adapter = viewPagerAdapter
-                    position?.let { binding.viewPager.currentItem = position }
+                    mainViewModel?.selectedItem?.let {
+                        binding.viewPager.currentItem = it
+                    }
+
                 })
         }
 
@@ -52,7 +56,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             }
 
             override fun onPageSelected(position: Int) {
-                (activity as MainActivity).viewModel.selectedItem = position
+                mainViewModel.selectedItem = position
             }
 
             override fun onPageScrollStateChanged(state: Int) {}

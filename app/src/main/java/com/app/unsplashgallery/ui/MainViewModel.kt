@@ -1,5 +1,6 @@
 package com.app.unsplashgallery.ui
 
+import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -13,7 +14,8 @@ import com.app.unsplashgallery.domain.repository.UnsplashRepository
 class MainViewModel(configHelper: ConfigHelper) : ViewModel() {
 
     private val repository = UnsplashRepository(configHelper)
-    var selectedItem: Int = 0
+    var selectedItem: Int? = null
+    var scrollState: Parcelable? = null
     var photosLiveData: LiveData<PagedList<UnsplashImage>>
     private val unsplashImageDataSourceFactory: UnsplashImageDataSourceFactory =
         UnsplashImageDataSourceFactory(repository)
