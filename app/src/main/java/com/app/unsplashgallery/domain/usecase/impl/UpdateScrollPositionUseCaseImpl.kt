@@ -7,6 +7,10 @@ class UpdateScrollPositionUseCaseImpl(
 ) : UpdateScrollPositionUseCase {
 
     override fun shouldScrollToLastSelectedItem(): Boolean {
-        return lastSelectedItem != null
+        if (lastSelectedItem == null || lastSelectedItem < 0) {
+            return false
+        }
+
+        return true
     }
 }
