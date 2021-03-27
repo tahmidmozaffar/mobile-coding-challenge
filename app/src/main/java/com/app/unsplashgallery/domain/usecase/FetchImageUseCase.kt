@@ -1,9 +1,10 @@
-package com.app.unsplashgallery.domain.repository
+package com.app.unsplashgallery.domain.usecase
 
 import com.app.unsplashgallery.domain.model.UnsplashImage
 
-interface UnsplashRepository {
-    fun getImages(
+interface FetchImageUseCase {
+
+    fun fetch(
         page: Int,
         perPage: Int,
         orderBy: String,

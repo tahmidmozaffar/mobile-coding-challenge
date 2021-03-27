@@ -21,8 +21,7 @@ class ImageViewPagerAdapter(
         val image = images[position]
 
         val viewHolder = ViewPageItemViewHolder(itemView)
-        viewHolder.bind(image, position)
-
+        viewHolder.bind(image)
         container.addView(itemView)
 
         return itemView

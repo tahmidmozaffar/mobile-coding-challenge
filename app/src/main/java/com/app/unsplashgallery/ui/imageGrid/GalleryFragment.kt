@@ -52,6 +52,9 @@ class GalleryFragment : Fragment(R.layout.fragment_gallery), GalleryView {
         })
 
         galleryViewModel.updateScrollState(mainViewModel?.selectedItem, this)
+
+        //we need to clear last selected item to maintain scroll position
+        // after screen rotation and random scroll changes
         mainViewModel?.selectedItem = null
     }
 

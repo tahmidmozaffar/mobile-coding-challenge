@@ -13,7 +13,7 @@ class ViewPageItemViewHolder(private val itemView: View) {
 
     private val imageView = itemView.findViewById<ImageView>(R.id.img_main)
 
-    fun bind(image: UnsplashImage, position: Int) {
+    fun bind(image: UnsplashImage) {
 
         Glide.with(itemView.context)
             .load(Uri.parse(image.urls.small))

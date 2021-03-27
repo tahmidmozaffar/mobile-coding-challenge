@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 private const val CONNECTION_TIMEOUT = 30L
 private const val READ_TIMEOUT = 30L
 
-object RetrofitBuilder {
+class RetrofitBuilder(private val baseUrl: String) {
 
     private val logging by lazy {
         HttpLoggingInterceptor().apply {
@@ -29,13 +29,13 @@ object RetrofitBuilder {
 
     private val retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl("https://api.unsplash.com/")
+            .baseUrl(baseUrl)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
-    val api by lazy {
+    val api: UnsplashApi by lazy {
         retrofit.create(UnsplashApi::class.java)
     }
 }

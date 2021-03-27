@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="UNSPLASH_API_KEY">fLgwpoJzeXgvOlHzFtNd1OxPa2at8i7sTimn3x9oJ0E</string>
+    <string name="UNSPLASH_BASE_URL">https://api.unsplash.com/</string>
 </resources>
