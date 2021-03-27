@@ -11,7 +11,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 
 class FetchImageUseCaseImplTest {
-    
+
     private lateinit var unsplashRepository: UnsplashRepository
     private val onSuccess: (images: List<UnsplashImage>) -> Unit = {
         println(it)
