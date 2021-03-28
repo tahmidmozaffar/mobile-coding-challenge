@@ -6,17 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
-import com.app.unsplashgallery.ui.imageDetail.adapter.ImageViewPagerAdapter
 import com.app.unsplashgallery.R
 import com.app.unsplashgallery.databinding.FragmentDetailBinding
-import com.app.unsplashgallery.ui.MainActivity
-import com.app.unsplashgallery.ui.MainViewModel
+import com.app.unsplashgallery.ui.SharedViewModel
+import com.app.unsplashgallery.ui.imageDetail.adapter.ImageViewPagerAdapter
+import org.koin.android.ext.android.inject
+import org.koin.core.component.KoinApiExtension
 
+@KoinApiExtension
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private lateinit var binding: FragmentDetailBinding
     private lateinit var viewPagerAdapter: ImageViewPagerAdapter
-    private lateinit var mainViewModel: MainViewModel
+    private val sharedViewModel: SharedViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,21 +31,19 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainViewModel = (activity as MainActivity).viewModel
 
         activity?.let {
-            mainViewModel.photosLiveData.observe(
+            sharedViewModel.photosLiveData.observe(
                 viewLifecycleOwner,
                 { images ->
                     viewPagerAdapter = ImageViewPagerAdapter(requireContext(), images)
                     binding.viewPager.adapter = viewPagerAdapter
-                    mainViewModel.selectedItem?.let {
+                    sharedViewModel.selectedItem?.let {
                         binding.viewPager.currentItem = it
                     }
 
                 })
         }
-
 
         binding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
@@ -54,11 +54,10 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             }
 
             override fun onPageSelected(position: Int) {
-                mainViewModel.selectedItem = position
+                sharedViewModel.selectedItem = position
             }
 
             override fun onPageScrollStateChanged(state: Int) {}
-
         })
     }
 }

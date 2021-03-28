@@ -2,11 +2,9 @@ package com.app.unsplashgallery.domain.usecase.impl
 
 import com.app.unsplashgallery.domain.usecase.UpdateScrollPositionUseCase
 
-class UpdateScrollPositionUseCaseImpl(
-    private val lastSelectedItem: Int?
-) : UpdateScrollPositionUseCase {
+class UpdateScrollPositionUseCaseImpl : UpdateScrollPositionUseCase {
 
-    override fun shouldScrollToLastSelectedItem(): Boolean {
+    override fun shouldScrollToLastSelectedItem(lastSelectedItem: Int?): Boolean {
         if (lastSelectedItem == null || lastSelectedItem < 0) {
             return false
         }

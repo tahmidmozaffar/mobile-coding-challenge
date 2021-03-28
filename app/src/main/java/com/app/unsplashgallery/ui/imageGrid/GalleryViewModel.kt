@@ -7,9 +7,9 @@ class GalleryViewModel : ViewModel() {
 
     fun updateScrollState(lastSelectedItem: Int?, view: GalleryView) {
 
-        val updateScrollPositionUseCase = UpdateScrollPositionUseCaseImpl(lastSelectedItem)
+        val updateScrollPositionUseCase = UpdateScrollPositionUseCaseImpl()
 
-        if (updateScrollPositionUseCase.shouldScrollToLastSelectedItem()) {
+        if (updateScrollPositionUseCase.shouldScrollToLastSelectedItem(lastSelectedItem)) {
             view.scrollToLastSelectedItem()
         } else {
             view.restoreScrollPosition()
